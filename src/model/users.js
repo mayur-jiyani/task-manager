@@ -49,7 +49,11 @@ const userSchema = new mongoose.Schema({
     }]
 })
 
-
+userSchema.virtual('tasks', {
+    ref: 'Tasks',
+    localField: '_id',
+    foreignField: 'owner'
+})
 
 
 // const me = new User({
@@ -63,6 +67,16 @@ const userSchema = new mongoose.Schema({
 // }).catch((error) => {
 //     console.log(error)
 // })
+
+userSchema.methods.toJSON = function () {
+    const user = this
+    const userObject = user.toObject()
+
+    delete userObject.tokens
+    delete userObject.password
+
+    return userObject
+}
 
 userSchema.methods.generatAuthToken = async function () {
     const user = this
