@@ -13,13 +13,12 @@ The application expects the following environment variables:
 PORT
 MONGODB_URL
 JWT_SECRET
-FROM_EMAIL
 SENDGRID_API_KEY
 ```
 
 The develompent, and test environment variables should be placed into the following files:
-- Development - ```bash /config/dev.env```
-- Test - ```bash /config/test.env```
+- Development - ``` /config/dev.env```
+- Test - ``` /config/test.env```
 
 # Installation
 1. Clone or download the repository.
